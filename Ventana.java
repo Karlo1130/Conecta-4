@@ -10,17 +10,14 @@ public class Ventana extends JFrame{
 		
 		Dimension ventana = new Dimension(1000, 800);
 		
-		this.setSize(ventana);
+		setSize(ventana);
 		setMinimumSize(ventana);
 		
 		setTitle("Conecta 4");//Titulo en la ventana
 		
-		MenuPrincipal menu = new MenuPrincipal();
-		Desarrollo tablero = new Desarrollo();
-				
-		//add(tablero);//Agrega el objeto dentro de la ventana 
-		add(menu);//Agrega el objeto dentro de la ventana
-		
+		Pantallas juego = new Pantallas();
+		 	
+		add(juego);//Agrega el objeto dentro de la ventana	
 		
 	}
 }

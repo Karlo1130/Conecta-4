@@ -12,52 +12,47 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuPrincipal extends JPanel{
+public class ComoJugar extends JPanel{
 
 	private JPanel panelBotones;
-	private JButton botones[];
+	private JButton boton;
 	
-	int menu=-1;
+	int menu = 1;
 	
-	public MenuPrincipal() {
+	public ComoJugar() {
 		
 		setLayout(new BorderLayout());
 		
 		panelBotones = new JPanel();
         //panelBotones.setBackground(Color.black);//color de fondo
 		
-		botones = new JButton[4];
 		panelBotones.setLayout(null);
 		
-		botones[0] = new JButton("JUGAR");//crea los 4 botones
-		botones[1] = new JButton("COMO JUGAR");
-		botones[2] = new JButton("CREDITOS");
-		botones[3] = new JButton("SALIR");
+		boton = new JButton("REGRESAR");
 		
-		for (int i = 0; i < 4; i++) {
-			add(botones[i]/*, BorderLayout.CENTER*/);//Agrega el objeto dentro del panel
-			botones[i].setBounds(400, ((i+1)*150), 200, 100);
-			botones[i].setBackground(Color.BLUE);//color de fondo
-			botones[i].setForeground(Color.WHITE);//color del texto
-			botones[i].setFont(new Font(botones[i].getFont().getFontName(), Font.BOLD, 18));
-			panelBotones.add(botones[i]);
+		
+		add(boton/*, BorderLayout.CENTER*/);//Agrega el objeto dentro del panel
+		boton.setBounds(600, 600, 200, 100);
+		boton.setBackground(Color.BLUE);//color de fondo
+		boton.setForeground(Color.WHITE);//color del texto			
+		boton.setFont(new Font(boton.getFont().getFontName(), Font.BOLD, 18));
+		panelBotones.add(boton);
 			
-			agregarAccion(botones[i], i);
-		}
+		agregarAccion(boton);
 		
 		crearFondo();
 		
 		add(panelBotones/*, BorderLayout.CENTER*/);
+		
 	}
 	
-	void agregarAccion(final JButton boton, final int x) {
+	void agregarAccion(final JButton boton) {
         boton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
-            	menu = x; //iguala menu a la opcion elegida	
+            	
+            	menu=-1;
             	System.out.println(menu);
-            		
-            	if (menu == 3)
-            		System.exit(x);
+            	
             }
         });
     }
