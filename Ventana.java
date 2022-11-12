@@ -15,7 +15,6 @@ public class Ventana extends JFrame{
 		
 		setTitle("Conecta 4");//Titulo en la ventana
 		
-		Pantallas juego = new Pantallas();
 		MenuPrincipal menu = new MenuPrincipal();
 		 	
 		add(menu);//Agrega el objeto dentro de la ventana	
