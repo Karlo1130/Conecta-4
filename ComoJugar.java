@@ -17,8 +17,6 @@ public class ComoJugar extends JPanel{
 	private JPanel panelBotones;
 	private JButton boton;
 	
-	int menu = 1;
-	
 	public ComoJugar() {
 		
 		setLayout(new BorderLayout());
@@ -50,8 +48,13 @@ public class ComoJugar extends JPanel{
         boton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
             	
-            	menu=-1;
-            	System.out.println(menu);
+            	panelBotones.removeAll();
+            	
+            	//panelBotones.addNotify();//aqui debe de volver a iniciar menuPrincipal
+            	panelBotones.isFocusCycleRoot();
+        		panelBotones.revalidate();;
+        		//panelBotones.repaint();
+        		//panelBotones.setVisible(true);
             	
             }
         });
@@ -78,5 +81,7 @@ public class ComoJugar extends JPanel{
 		
 		panelBotones.add(fondo);
 	}
+	
+	
 	
 }

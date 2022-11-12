@@ -15,15 +15,23 @@ import javax.swing.JPanel;
 public class MenuPrincipal extends JPanel{
 
 	private JPanel panelBotones;
+	private JPanel panelTutorial;
 	private JButton botones[];
+	
+	private ComoJugar tutorial;
 	
 	int menu=-1;
 	
 	public MenuPrincipal() {
 		
-		setLayout(new BorderLayout());
+		tutorial = new ComoJugar();
 		
+		setLayout(new BorderLayout());
+				
 		panelBotones = new JPanel();
+		//panelTutorial = new JPanel();
+		
+		//panelTutorial.add(tutorial);
         //panelBotones.setBackground(Color.black);//color de fondo
 		
 		botones = new JButton[4];
@@ -53,11 +61,23 @@ public class MenuPrincipal extends JPanel{
 	void agregarAccion(final JButton boton, final int x) {
         boton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
-            	menu = x; //iguala menu a la opcion elegida	
-            	System.out.println(menu);
+            	/*menu = x; //iguala menu a la opcion elegida	
+            	System.out.println(menu);*/
+            	
+            	if(x==1)
+            	{
+            		panelBotones.removeAll();
+            		add(tutorial);
+            		panelBotones.revalidate();
+            		//panelBotones.repaint();
+            		//panelBotones.setVisible(false);
             		
-            	if (menu == 3)
+            	}
+            	
+            	
+            	if(x == 3)
             		System.exit(x);
+            	
             }
         });
     }
@@ -83,5 +103,6 @@ public class MenuPrincipal extends JPanel{
 		
 		panelBotones.add(fondo);
 	}
+
 	
 }
