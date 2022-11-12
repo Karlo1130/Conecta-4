@@ -15,69 +15,63 @@ import javax.swing.JPanel;
 public class MenuPrincipal extends JPanel{
 
 	private JPanel panelBotones;
-	private JPanel panelTutorial;
 	private JButton botones[];
 	
-	private ComoJugar tutorial;
-	
-	int menu=-1;
-	
 	public MenuPrincipal() {
-		
-		tutorial = new ComoJugar();
 		
 		setLayout(new BorderLayout());
 				
 		panelBotones = new JPanel();
-		//panelTutorial = new JPanel();
-		
-		//panelTutorial.add(tutorial);
-        //panelBotones.setBackground(Color.black);//color de fondo
 		
 		botones = new JButton[4];
 		panelBotones.setLayout(null);
 		
-		botones[0] = new JButton("JUGAR");//crea los 4 botones
+		botones[0] = new JButton("JUGAR");
 		botones[1] = new JButton("COMO JUGAR");
 		botones[2] = new JButton("CREDITOS");
 		botones[3] = new JButton("SALIR");
+		//crea los 4 botones
 		
 		for (int i = 0; i < 4; i++) {
-			add(botones[i]/*, BorderLayout.CENTER*/);//Agrega el objeto dentro del panel
-			botones[i].setBounds(400, ((i+1)*150), 200, 100);
+			botones[i].setBounds(400, ((i+1)*150), 200, 100);//insertas la posicion y medidas de los botones
 			botones[i].setBackground(Color.BLUE);//color de fondo
 			botones[i].setForeground(Color.WHITE);//color del texto
 			botones[i].setFont(new Font(botones[i].getFont().getFontName(), Font.BOLD, 18));
-			panelBotones.add(botones[i]);
+			panelBotones.add(botones[i]);//agrega los botones al panel
 			
 			agregarAccion(botones[i], i);
 		}
 		
 		crearFondo();
 		
-		add(panelBotones/*, BorderLayout.CENTER*/);
+		add(panelBotones);//agrega el panel
 	}
 	
 	void agregarAccion(final JButton boton, final int x) {
         boton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
-            	/*menu = x; //iguala menu a la opcion elegida	
-            	System.out.println(menu);*/
             	
-            	if(x==1)
+            	switch(x)
             	{
+            	case 0:
             		panelBotones.removeAll();
-            		add(tutorial);
+            		add(new Desarrollo());   
             		panelBotones.revalidate();
-            		//panelBotones.repaint();
-            		//panelBotones.setVisible(false);
-            		
+            		break;
+            	case 1://crea y muestra Como jugar
+            		panelBotones.removeAll();
+            		add(new ComoJugar());   
+            		panelBotones.revalidate();
+            		break;
+            	case 2:/*
+            		panelBotones.removeAll();
+            		add(new ComoJugar());   
+            		panelBotones.revalidate();*/
+            		break;
+            	case 3://termina el programa
+            		System.exit(0);
+            		break;
             	}
-            	
-            	
-            	if(x == 3)
-            		System.exit(x);
-            	
             }
         });
     }
@@ -103,6 +97,6 @@ public class MenuPrincipal extends JPanel{
 		
 		panelBotones.add(fondo);
 	}
-
+					
 	
 }

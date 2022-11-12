@@ -14,33 +14,31 @@ import javax.swing.JPanel;
 
 public class ComoJugar extends JPanel{
 
-	private JPanel panelBotones;
+	private JPanel panelBoton;
 	private JButton boton;
 	
 	public ComoJugar() {
 		
 		setLayout(new BorderLayout());
 		
-		panelBotones = new JPanel();
-        //panelBotones.setBackground(Color.black);//color de fondo
+		panelBoton = new JPanel();
 		
-		panelBotones.setLayout(null);
+		panelBoton.setLayout(null);
 		
 		boton = new JButton("REGRESAR");
 		
-		
-		add(boton/*, BorderLayout.CENTER*/);//Agrega el objeto dentro del panel
+		panelBoton.add(boton);//Agrega el objeto dentro del panel
 		boton.setBounds(600, 600, 200, 100);
 		boton.setBackground(Color.BLUE);//color de fondo
 		boton.setForeground(Color.WHITE);//color del texto			
 		boton.setFont(new Font(boton.getFont().getFontName(), Font.BOLD, 18));
-		panelBotones.add(boton);
+		panelBoton.add(boton);
 			
 		agregarAccion(boton);
 		
 		crearFondo();
 		
-		add(panelBotones/*, BorderLayout.CENTER*/);
+		add(panelBoton);
 		
 	}
 	
@@ -48,14 +46,10 @@ public class ComoJugar extends JPanel{
         boton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
             	
-            	panelBotones.removeAll();
-            	
-            	//panelBotones.addNotify();//aqui debe de volver a iniciar menuPrincipal
-            	panelBotones.isFocusCycleRoot();
-        		panelBotones.revalidate();;
-        		//panelBotones.repaint();
-        		//panelBotones.setVisible(true);
-            	
+            	panelBoton.removeAll();
+            	add(new MenuPrincipal());
+        		panelBoton.revalidate();;
+        		
             }
         });
     }
@@ -79,7 +73,7 @@ public class ComoJugar extends JPanel{
 		
 		fondo.setBounds(0, 0, 480, 360); //260, 220
 		
-		panelBotones.add(fondo);
+		panelBoton.add(fondo);
 	}
 	
 	
