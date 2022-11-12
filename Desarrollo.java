@@ -22,6 +22,7 @@ public class Desarrollo extends JPanel{
     int i, j, turno;
     String nombre[] = {"AZUL", "ROJO"};//guarda el nombre de la ficha, para el cambio de turno.
     String color = nombre[0];
+    int cambiarColor = 0;
 
     public Desarrollo() {
         /*Crea el contenedor y lo divide en 5 zonas NORTH, SOUTH, EAST, WEST y CENTER*/
@@ -29,7 +30,7 @@ public class Desarrollo extends JPanel{
 
         botonIndicaTurno = new JButton("Turno de: " + color);
         add(botonIndicaTurno, BorderLayout.NORTH);//Agrega el objeto dentro del panel
-        botonIndicaTurno.setBackground(Color.BLACK);//color de fondo
+        botonIndicaTurno.setBackground(Color.blue);//color de fondo
         botonIndicaTurno.setForeground(Color.WHITE);//color del texto
         botonIndicaTurno.setFont(new Font(botonIndicaTurno.getFont().getFontName(), Font.BOLD, 18));
 
@@ -94,6 +95,7 @@ public class Desarrollo extends JPanel{
         }
         //actualiza el texto del boton que indica el turno del jugador actual.
         botonIndicaTurno.setText("Turno de: " + color);
+        cambiarColor();
     }
 
     /*Metodo que busca una imagen segun su nombre en la ruta actual y 
@@ -107,5 +109,19 @@ public class Desarrollo extends JPanel{
             /*Devuelve por default la imagen de ficha azul*/
             return new ImageIcon(getClass().getResource("img/Azul.gif"));
         }
+    }
+    
+    void cambiarColor() {
+    	switch(cambiarColor)
+        {
+        case 0:
+        	botonIndicaTurno.setBackground(Color.red);
+        	cambiarColor++;
+        	break;
+        case 1:
+        	botonIndicaTurno.setBackground(Color.blue);
+        	cambiarColor--;
+        	break;
+        } 	
     }
 }//Fin Desarrollo

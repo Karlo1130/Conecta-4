@@ -63,10 +63,10 @@ public class MenuPrincipal extends JPanel{
             		add(new ComoJugar());   
             		panelBotones.revalidate();
             		break;
-            	case 2:/*
+            	case 2:
             		panelBotones.removeAll();
-            		add(new ComoJugar());   
-            		panelBotones.revalidate();*/
+            		add(new Creditos());   
+            		panelBotones.revalidate();
             		break;
             	case 3://termina el programa
             		System.exit(0);
