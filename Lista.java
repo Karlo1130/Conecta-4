@@ -87,4 +87,180 @@ public class Lista {
 			return -1;
 		}
 	}
+	
+	public boolean verificarGanador() {
+		
+		boolean gana=false;
+		
+		if (Head != null){
+			Q = Head;
+			while( Q != null)//renglon
+			{
+				P = Q;
+				while(P != null)//columna
+				{
+					if(gana != true)
+						gana = posicionGanadora(P);
+					
+					P = P.Derecha;
+				}
+				Q = Q.Abajo;
+
+			}
+
+		}
+		
+		return gana;
+	}
+	
+	boolean posicionGanadora(Nodo P) {
+		
+		boolean gana=false;
+		
+		gana = conectaAbajo(P);
+		if(gana != true) {
+			gana = conectaDerecha(P);
+			if(gana != true) {
+				gana = conectaIzquierda(P);
+				if(gana != true) {
+					gana = conectaDiagonalIzquierda(P);
+					if(gana != true) {
+						gana = conectaDiagonalDerecha(P);
+					}
+				}
+			}
+		}
+		
+		return gana;
+		
+	}
+	
+	boolean conectaAbajo(Nodo P) {
+		
+		boolean ganador = false;
+		
+		if(P.Abajo != null && P.dato != 0) {
+			R = P.Abajo;
+			if(R.dato == P.dato) {
+				if(R.Abajo != null) {
+					P = R.Abajo;
+					if(P.dato == R.dato) {
+						if(P.Abajo != null) {
+							R = P.Abajo;
+							if(R.dato == P.dato) {
+								ganador = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return ganador;
+	}
+	
+	boolean conectaDerecha(Nodo P) {
+		
+		boolean ganador = false;
+		
+		if(P.Derecha != null && P.dato != 0) {
+			R = P.Derecha;
+			if(R.dato == P.dato) {
+				if(R.Derecha != null) {
+					P = R.Derecha;
+					if(P.dato == R.dato) {
+						if(P.Derecha != null) {
+							R = P.Derecha;
+							if(R.dato == P.dato) {
+							ganador = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return ganador;
+	}
+	
+	boolean conectaIzquierda(Nodo P) {
+		
+		boolean ganador = false;
+		
+		if(P.Izquierda != null && P.dato != 0) {
+			R = P.Izquierda;
+			if(R.dato == P.dato) {
+				if(R.Izquierda != null) {
+					P = R.Izquierda;
+					if(P.dato == R.dato) {
+						if(P.Izquierda != null) {
+							R = P.Izquierda;
+							if(R.dato == P.dato) {
+							ganador = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return ganador;
+	}
+	
+	boolean conectaDiagonalIzquierda(Nodo P) {
+		
+		boolean ganador = false;
+		
+		if(P.Izquierda != null && P.Abajo != null && P.dato != 0) {
+			R = P.Izquierda;
+			Q = R.Abajo;
+			if(Q.dato == P.dato) {
+				if(Q.Izquierda != null && Q.Abajo != null) {
+					P = Q.Izquierda;
+					R = P.Abajo;
+					if(R.dato == Q.dato) {
+						if(R.Izquierda != null && R.Abajo != null) {
+							P = R.Izquierda;
+							Q = P.Abajo;
+							if(Q.dato == R.dato) {
+							ganador = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return ganador;
+	}
+	
+	boolean conectaDiagonalDerecha(Nodo P) {
+		
+		boolean ganador = false;
+		
+		if(P.Derecha != null && P.Abajo != null && P.dato != 0) {
+			R = P.Derecha;
+			Q = R.Abajo;
+			if(Q.dato == P.dato) {
+				if(Q.Derecha != null && Q.Abajo != null) {
+					P = Q.Derecha;
+					R = P.Abajo;
+					if(R.dato == Q.dato) {
+						if(R.Derecha != null && R.Abajo != null) {
+							P = R.Derecha;
+							Q = P.Abajo;
+							if(Q.dato == R.dato) {
+							ganador = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return ganador;
+	}
+	
 }
+
+

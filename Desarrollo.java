@@ -31,7 +31,7 @@ public class Desarrollo extends JPanel{
         botonIndicaTurno = new JButton("Turno de: " + color);
         add(botonIndicaTurno, BorderLayout.NORTH);//Agrega el objeto dentro del panel
         botonIndicaTurno.setBackground(Color.blue);//color de fondo
-        botonIndicaTurno.setForeground(Color.WHITE);//color del texto
+        botonIndicaTurno.setForeground(Color.white);//color del texto
         botonIndicaTurno.setFont(new Font(botonIndicaTurno.getFont().getFontName(), Font.BOLD, 18));
 
         /*Crear el panel para manejar el tablero de fichas*/
@@ -79,6 +79,13 @@ public class Desarrollo extends JPanel{
                 if (x1 > -1) {//si renglon esta disponible
                     botones[x1][y].setIcon(createImageIcon(fichas[turno - 1]));
                     lista.desplegarLista();
+                    
+                    if(lista.verificarGanador()) {
+                    	removeAll();
+                    	add(new MenuPrincipal());
+                		panelBotones.revalidate();;
+                    }
+                    
                     CambiarTurno();
                 }
             }
