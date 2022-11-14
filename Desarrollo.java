@@ -80,9 +80,15 @@ public class Desarrollo extends JPanel{
                     botones[x1][y].setIcon(createImageIcon(fichas[turno - 1]));
                     lista.desplegarLista();
                     
-                    if(lista.verificarGanador()) {
+                    if(lista.verificarLleno()) {
                     	removeAll();
                     	add(new MenuPrincipal());
+                		panelBotones.revalidate();;
+                    }
+                    
+                    if(lista.verificarGanador()) {
+                    	removeAll();
+                    	add(new ComoJugar());
                 		panelBotones.revalidate();;
                     }
                     

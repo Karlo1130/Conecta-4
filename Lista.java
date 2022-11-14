@@ -88,6 +88,33 @@ public class Lista {
 		}
 	}
 	
+	public boolean verificarLleno() {
+		
+		boolean lleno = false;
+		int cont = 0;
+		
+		if (Head != null){
+			Q = Head;
+			while( Q != null)//renglon
+			{
+				P = Q;
+				while(P != null)//columna
+				{
+					if(P.dato != 0)
+						cont++;
+					
+					P = P.Derecha;
+				}
+				Q = Q.Abajo;
+			}
+		}
+		
+		if(cont ==  42)
+			lleno = true;
+		
+		return lleno;
+	}
+	
 	public boolean verificarGanador() {
 		
 		boolean gana=false;
