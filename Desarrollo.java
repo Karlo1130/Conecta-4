@@ -20,12 +20,15 @@ public class Desarrollo extends JPanel{
     Lista lista = new Lista(6, 7);
 
     int i, j, turno;
+    int puntos[] = {0, 0};
     String nombre[] = {"AZUL", "ROJO"};//guarda el nombre de la ficha, para el cambio de turno.
     String color = nombre[0];
     int cambiarColor = 0;
 
-    public Desarrollo() {
+    public Desarrollo(int puntos[]) {
         /*Crea el contenedor y lo divide en 5 zonas NORTH, SOUTH, EAST, WEST y CENTER*/
+    	this.puntos = puntos;
+    	
         setLayout(new BorderLayout());
 
         botonIndicaTurno = new JButton("Turno de: " + color);
@@ -87,8 +90,19 @@ public class Desarrollo extends JPanel{
                     }
                     
                     if(lista.verificarGanador()) {
+                    	
+                    	switch(turno)
+                    	{
+                    	case 1:
+                    		puntos[0]++;
+                    		break;
+                    	case 2:
+                    		puntos[1]++;
+                    		break;
+                    	}
+                    	
                     	removeAll();
-                    	add(new ComoJugar());
+                    	add(new MenuGanador(turno, puntos));
                 		panelBotones.revalidate();;
                     }
                     
@@ -137,4 +151,8 @@ public class Desarrollo extends JPanel{
         	break;
         } 	
     }
+ 
+    
+    
+    
 }//Fin Desarrollo

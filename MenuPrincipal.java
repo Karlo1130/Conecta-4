@@ -17,6 +17,8 @@ public class MenuPrincipal extends JPanel{
 	private JPanel panelBotones;
 	private JButton botones[];
 	
+	private final int puntos[] = {0, 0};
+	
 	public MenuPrincipal() {
 		
 		setLayout(new BorderLayout());
@@ -55,7 +57,7 @@ public class MenuPrincipal extends JPanel{
             	{
             	case 0:
             		panelBotones.removeAll();
-            		add(new Desarrollo());   
+            		add(new Desarrollo(puntos));   
             		panelBotones.revalidate();
             		break;
             	case 1://crea y muestra Como jugar
