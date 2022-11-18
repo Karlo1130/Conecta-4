@@ -19,7 +19,7 @@ public class MenuGanador extends JPanel{
 	private JLabel mostrarGanador;
 	private JButton botones[];
 	
-	private int[] puntos = new int[2];
+	private int[] puntos = new int[3];
 	
 	public MenuGanador(int turno, int[] puntos) {
 		
@@ -73,6 +73,10 @@ public class MenuGanador extends JPanel{
 		
 		switch(turno)
 		{
+		case 0:
+			mostrarGanador.setText("NINGUNO GANA");
+			mostrarGanador.setBackground(Color.MAGENTA);
+			break;
 		case 1:
 			mostrarGanador.setText("GANA EL AZUL");
 			mostrarGanador.setBackground(Color.BLUE);

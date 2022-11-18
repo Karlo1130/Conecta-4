@@ -85,7 +85,7 @@ public class Desarrollo extends JPanel{
                     
                     if(lista.verificarLleno()) {
                     	removeAll();
-                    	add(new MenuPrincipal());
+                    	add(new MenuGanador(0, puntos));
                 		panelBotones.revalidate();;
                     }
                     
