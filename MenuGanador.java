@@ -109,7 +109,7 @@ public class MenuGanador extends JPanel{
             		break;
             	case 1://crea y muestra Como jugar
             		panelBotones.removeAll();
-            		add(new MenuPrincipal());
+            		add(new MenuPrincipal(0));
             		panelBotones.revalidate();
             		break;
             	case 2://termina el programa

@@ -6,17 +6,19 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 
 public class Desarrollo extends JPanel{
 	private JPanel panelBotones;
     private JButton botones[][];
     private JButton botonIndicaTurno;
-    private String fichas[] = {"Azul.gif", "Rojo.gif"};
+    private String fichas[] = {"fichaazul.png", "ficharoja.png"};
     Lista lista = new Lista(6, 7);
 
     int i, j, turno;
@@ -33,7 +35,7 @@ public class Desarrollo extends JPanel{
 
         botonIndicaTurno = new JButton("Turno de: " + color);
         add(botonIndicaTurno, BorderLayout.NORTH);//Agrega el objeto dentro del panel
-        botonIndicaTurno.setBackground(Color.blue);//color de fondo
+        botonIndicaTurno.setBackground(Color.decode("#ABDDED"));//color de fondo
         botonIndicaTurno.setForeground(Color.white);//color del texto
         botonIndicaTurno.setFont(new Font(botonIndicaTurno.getFont().getFontName(), Font.BOLD, 18));
 
@@ -60,6 +62,8 @@ public class Desarrollo extends JPanel{
                 Dimension tamanoFigura = new Dimension(imagen.getIconHeight(), imagen.getIconWidth());
                 /* hacer el boton del tama�o de la imagen del icono*/
                 botones[i][j].setPreferredSize(tamanoFigura);
+                botones[i][j].setBackground(Color.decode("#FFE600"));
+                botones[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
                 /*agregar al boton el evento del click del mouse*/
                 agregarAccion(botones[i][j], i, j);
                 /*agregar la matriz de botones al panel para ser visualizado en la ventana*/
@@ -142,11 +146,11 @@ public class Desarrollo extends JPanel{
     	switch(cambiarColor)
         {
         case 0:
-        	botonIndicaTurno.setBackground(Color.red);
+        	botonIndicaTurno.setBackground(Color.decode("#FF572E"));
         	cambiarColor++;
         	break;
         case 1:
-        	botonIndicaTurno.setBackground(Color.blue);
+        	botonIndicaTurno.setBackground(Color.decode("#ABDDED"));
         	cambiarColor--;
         	break;
         } 	
